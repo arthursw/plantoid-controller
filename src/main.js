@@ -239,27 +239,7 @@ export function main(component) {
 	}
 
 	function render() {
-		// for(let ledStrip of ledStrips) {
-			
-		// 	let geometry = ledStrip.geometry;
-		// 	let nLeds = ledStrip.nLeds;
 
-		// 	if(geometry && geometry.attributes.size && geometry.attributes.color) {
-
-		// 		// var time = Date.now() * 0.005;
-		// 		// var sizes = geometry.attributes.size.array;
-		// 		// var colors = geometry.attributes.color.array;
-		// 		// for ( var i = 0; i < nLeds ; i++ ) {
-		// 		// 	sizes[ i ] = 10 * ( 1 + Math.sin( 0.1 * i + time ) );
-		// 		// 	colors[ i * 3 + 0] = (Math.sin( 0.1 * i + time ) + 1)/2;
-		// 		// 	colors[ i * 3 + 1] = (Math.sin( 0.1 * i + time ) + 1)/2;
-		// 		// 	colors[ i * 3 + 2] = (Math.sin( 0.1 * i + time ) + 1)/2;
-		// 		// }
-		// 		// geometry.attributes.size.needsUpdate = true;
-		// 		// geometry.attributes.color.needsUpdate = true;
-		// 	}
-
-		// }
 		renderer.render( scene, camera );
 
 		let time = Date.now() * 0.001;
@@ -269,28 +249,6 @@ export function main(component) {
 			let values = [];
 
 			for(let i=0 ; i<ledStrip.nLeds ; i++) {
-				
-				// let config = component.state.strips[ledStrip.name];
-
-				// if(config.type == 'color') {
-
-				// }
-				// let frequency = config.frequency;
-				// let color1 = config.color1;
-				// let color2 = config.color2;
-				// let mask = JSON.parse(config.mask) | [];
-				// if(mask.indexOf(i) >= 0) {
-				// 	values.push(0, 0, 0);
-				// }
-				// let type = config.type;
-				// let t = time + i * step;
-				// let func = type == 'sine' ? Math.sin : type == 'triangle' ? triangle : square;
-				// let value = 0.5 + 0.5 * func(2 * Math.PI * frequency * t);
-				
-				// for(let c of ['red', 'green', 'blue']) {
-				// 	let color = color1[c] * (1-value) + color2[c] * value;
-				// 	values.push(color);
-				// }
 
 				values.push(...component.computeValues(ledStrip.name, i, ledStrip.nLeds));
 			}
