@@ -1,0 +1,16 @@
+.gui-container {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.gui-container > div {
+	display: block;
+	position: relative !important;
+	top: 0!important;
+	bottom: 0!important;
+	right: 0!important;
+}
