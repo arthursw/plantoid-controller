@@ -1,23 +1,12 @@
-// import io from 'socket.io-client';
-// import('./libs/zlib.min.js');
-
-// var THREE = require('three');
-// var zlib = require('zlib');
-// import("three/examples/js/controls/OrbitControls.js");
-// import("three/examples/js/curves/NURBSCurve.js");
-// import("three/examples/js/curves/NURBSUtils.js");
-// import("three/examples/js/loaders/FBXLoader.js");
-// let Detector = require("three/examples/js/Detector.js");
-// import("three/examples/js/libs/stats.min.js");
-
-// import("./libs/threejs/three.js");
-// import("./libs/threejs-libs/controls/OrbitControls.js");
-// import("./libs/threejs-libs/curves/NURBSCurve.js");
-// import("./libs/threejs-libs/curves/NURBSUtils.js");
-// import("./libs/threejs-libs/loaders/FBXLoader.js");
-// import("./libs/threejs-libs/Detector.js");
-// import("./libs/threejs-libs/libs/stats.min.js");
-
+let ledStripConfigs = [
+	{ name: 'led-strip-r', nLeds: 100},
+	{ name: 'led-strip-l', nLeds: 100},
+	{ name: 'led-strip-stem-l', nLeds: 100},
+	{ name: 'led-strip-stem-r', nLeds: 100},
+	{ name: 'led-strip-leaf-l', nLeds: 100},
+	{ name: 'led-strip-leaf-r', nLeds: 100},
+	{ name: 'led-strip-petals', nLeds: 600},
+];
 
 let THREE = window.THREE;
 let io = window.io;
@@ -32,12 +21,6 @@ export function main(component) {
 	
 	socket.on('connected', ()=> simulateSockets = false );
 
-
-	// socket.on('news', function (data) {
-	// 	console.log(data);
-	// 	socket.emit('my other event', { my: 'data' });
-	// });
-
 	if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 	var container, stats, controls;
@@ -47,15 +30,6 @@ export function main(component) {
 	var raycaster;
 	var INTERSECTED;
 
-	let ledStripConfigs = [
-		{ name: 'led-strip-r', nLeds: 100},
-		{ name: 'led-strip-l', nLeds: 100},
-		{ name: 'led-strip-stem-l', nLeds: 100},
-		{ name: 'led-strip-stem-r', nLeds: 100},
-		{ name: 'led-strip-leaf-l', nLeds: 100},
-		{ name: 'led-strip-leaf-r', nLeds: 100},
-		{ name: 'led-strip-petals', nLeds: 600},
-	];
 	let ledStrips = [];
 
 	init();
@@ -284,21 +258,6 @@ export function main(component) {
 			if ( intersects.length > 0 ) {
 				
 				component.toggleMask(ledStrip.name, intersects[ 0 ].index)
-
-				// socket.emit('my other event', { my: 'data' });
-
-			// 	if ( INTERSECTED != intersects[ 0 ].index ) {
-			// 		attributes.size.array[ INTERSECTED ] = PARTICLE_SIZE;
-			// 		INTERSECTED = intersects[ 0 ].index;
-			// 		attributes.size.array[ INTERSECTED ] = PARTICLE_SIZE * 10.25;
-			// 		attributes.size.needsUpdate = true;
-			// 	}
-			// 	break;
-			// } else if ( INTERSECTED !== null ) {
-			// 	attributes.size.array[ INTERSECTED ] = PARTICLE_SIZE;
-			// 	attributes.size.needsUpdate = true;
-			// 	INTERSECTED = null;
-			// 	break;
 			}
 
 		}
